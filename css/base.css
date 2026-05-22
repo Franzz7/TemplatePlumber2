@@ -1,0 +1,137 @@
+/* ===================================================
+   BASE.CSS — Variables, Reset, Typography, Utilities
+   =================================================== */
+
+/* --- Custom Properties --- */
+:root {
+  /* Colours */
+  --color-bg:         #F8F5F0;
+  --color-bg-alt:     #EDE7DC;
+  --color-text:       #1A1A1A;
+  --color-text-mid:   #4A4540;
+  --color-text-light: #7A746C;
+  --color-accent:     #3D5A4F;
+  --color-warm:       #C97D60;
+  --color-rule:       #D4CFC4;
+  --color-rule-dark:  #B8B0A4;
+  --color-white:      #ffffff;
+
+  /* Typography */
+  --font-serif:     'Fraunces', Georgia, serif;
+  --font-sans:      'Inter', -apple-system, sans-serif;
+  --font-mono:      'JetBrains Mono', 'Courier New', monospace;
+  --font-size-base: 17px;
+
+  /* Layout */
+  --max-width:       1240px;
+  --padding-x:       clamp(20px, 5vw, 80px);
+  --spacing-section: 120px;
+  --nav-height:      72px;
+
+  /* Components */
+  --border-radius:   2px;
+  --transition:      0.2s ease;
+}
+
+/* --- Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol { list-style: none; }
+
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --- Base Typography --- */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* --- Utilities --- */
+
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--padding-x);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Monospace section counter — "01 / Selected Work" */
+.section-num {
+  display: block;
+  margin-bottom: 32px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+
+/* Uppercase eyebrow label — "Est. 2004 · Reigate" */
+.label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+
+/* Horizontal rule */
+.rule {
+  border: none;
+  border-top: 1px solid var(--color-rule);
+}
+
+/* Scroll-triggered fade-in — driven by IntersectionObserver in main.js */
+.fi {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: transform;
+}
+
+.fi.on {
+  opacity: 1;
+  transform: none;
+}
